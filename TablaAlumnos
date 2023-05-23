@@ -1,0 +1,27 @@
+  CREATE TABLE Alumnos (
+  Id NUMBER (10) PRIMARY KEY,
+  Matricula NUMBER(15) NOT NULL UNIQUE,
+  Nombre NVARCHAR2(60) NOT NULL,
+  ApellidoP NVARCHAR2(60) NOT NULL,
+  ApellidoM NVARCHAR2(60) NOT NULL,
+  Carrera NVARCHAR2(60) NOT NULL,
+  Grupo NVARCHAR2(15) NOT NULL,
+  Semestre NVARCHAR2 (5) NOT NULL,
+  Edificio NVARCHAR2(20) DEFAULT 'Desconocido',
+  PromedioGeneral FLOAT DEFAULT 0.0
+);
+
+
+
+create or replace procedure insertar_alumnos 
+(a_Id NUMBER , a_Matricula NUMBER, a_Nombre NVARCHAR2, a_ApellidoP NVARCHAR2, a_ApellidoM NVARCHAR2, a_Carrera NVARCHAR2,
+ a_Grupo NVARCHAR2, a_Semestre NVARCHAR2, a_Edificio NVARCHAR2 DEFAULT 'Desconocido', a_PromedioGeneral FLOAT )
+as
+begin
+insert into Alumnos values (a_Id,a_Matricula,a_Nombre,  a_ApellidoP, a_ApellidoM, a_Carrera,a_Grupo, a_Semestre, a_Edificio,a_PromedioGeneral );
+end;
+
+EXECUTE insertar_alumnos;
+EXECUTE insertar_alumnos(1,206020022,'Alan','Lopez ','Chaves ','Ingeniería en Sistemas Computacionales','6S11','6','A','80.0');
+
+SELECT*FROM Alumnos;
